@@ -32,7 +32,7 @@ The datajam configuration has the following components:
 
 * Download the installation script
 
-    curl -O https://raw.github.com/edx/datajam/scripts/edx-datajam
+    curl -O https://raw.github.com/edx/datajam/master/scripts/edx-datajam
 
     chmod a+x edx-datajam
 
