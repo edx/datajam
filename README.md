@@ -1,4 +1,4 @@
-The edX *datajam stack* is a Vagrant instance designed for local development for datajam participants.  The instance:
+The edX *datajam stack* is a [Vagrant](http://www.vagrantup.com/about.html) instance designed for local development for datajam participants.  The instance:
 
 * Uses the same system dependencies as edX production.
 * Simplifies certain production settings to make development more convenient.  For example, it disables **nginx** and **gunicorn** in favor of **runserver** for Django development.
@@ -17,13 +17,13 @@ The datajam configuration has the following components:
 
 # Installing the edX Datajam Stack
 
-* Install [Virtualbox >= 4.2.18](https://www.virtualbox.org/wiki/Download_Old_Builds_4_2)
-* Install [Vagrant >= 1.3.4](https://github.com/edx/configuration/wiki/Installing-Vagrant)
+* Install [Virtualbox 4.2.18](https://www.virtualbox.org/wiki/Download_Old_Builds_4_2)
+* Install [Vagrant 1.3.4](https://github.com/edx/configuration/wiki/Installing-Vagrant)
 * Install the `vagrant-hostsupdater` plugin:
 
     vagrant plugin install vagrant-hostsupdater
 
-* Install [git](http://git-scm.com/book/en/Getting-Started-Installing-Git)
+* Install [git](http://git-scm.com/downloads)
 * Create a directory to store the image
 
     mkdir ~/edx-datajam-root
@@ -35,6 +35,14 @@ The datajam configuration has the following components:
     curl -O https://raw.github.com/edx/datajam/master/scripts/edx-datajam
 
     chmod a+x edx-datajam
+
+* Ensure nfsd is running
+    * Mac OS X: `sudo nfsd`
+    * Ubuntu: `sudo service nfs-kernel-server start`
+
+* Ensure ports 8000-8003, 4567 are not in use.  If you suspect they may be, use `netstat` to confirm.
+
+*If you are currently using other edX development environments (devstack etc), you will need to "halt" those virtual machines before continuing*
 
 * Run the installation script to setup the environment
 
@@ -122,41 +130,4 @@ Login to the LMS and CMS with the user "datajam@edx.org" with password "datajam.
 
 # Issues / Workarounds
 
-* All Platforms
-    * If you see an error message that looks like
-        [default] Mounting NFS shared folders...
-        The following SSH command responded with a non-zero exit status.
-        Vagrant assumes that this means the command failed!
-
-        mount -o 'vers=3,udp' 192.168.33.1:'/path/to/edx-platform' /edx/app/edxapp/edx-platform
-
-        Stdout from the command:
-
-        Stderr from the command:
-
-        stdin: is not a tty
-        mount.nfs: requested NFS version or transport protocol is not supported
-
-      It is likely that `nfsd` is not running properly on your host machine or is being blocked by a firewall.  Ensure that it is running and accessible and then try again.
-
-* Mac OS X
-    * If you get an error such as `NS_ERROR_FAILURE`, try upgrading VirtualBox (4.3.2 seems to solve this on OS/X Mavericks).
-* Ubuntu
-    * If you are working on an Ubuntu workstation and your home directory is encrypted you will likely run into NFS problems. To work around the issue use a root directory that is not on an encrypted volume.
-    * If you see this message:
-
-        It appears your machine doesn't support NFS, or there is not an
-        adapter to enable NFS on this machine for Vagrant. Please verify
-        that `nfsd` is installed on your machine, and try again. If you're
-        on Windows, NFS isn't supported. If the problem persists, please
-        contact Vagrant support.
-
-      you need to install nfs using this command:
-
-        sudo apt-get install nfs-common nfs-kernel-server
-
-    * If the script appears to hang at `[default] Mounting NFS shared folders...`, exit it using Ctrl-C and then
-        * Modify /etc/exports to remove the vagrant related lines at the bottom
-        * Run
-
-            sudo service nfs-kernel-server restart
+See this [wiki page](https://github.com/edx/datajam/wiki/Workarounds-for-Issues)
