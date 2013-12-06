@@ -19,11 +19,8 @@ The datajam configuration has the following components:
 
 * Install [Virtualbox 4.2.18](https://www.virtualbox.org/wiki/Download_Old_Builds_4_2)
 * Install [Vagrant 1.3.4](https://github.com/edx/configuration/wiki/Installing-Vagrant)
-* Install the `vagrant-hostsupdater` plugin:
-
-        vagrant plugin install vagrant-hostsupdater
-
 * Install [git](http://git-scm.com/downloads)
+* Install [python 2.7](http://www.python.org/download/releases/2.7/)
 * Create a directory to store the image
 
         mkdir ~/edx-datajam-root
@@ -47,11 +44,15 @@ The datajam configuration has the following components:
 
 * Ensure nfsd is running
     * Mac OS X: `sudo nfsd`
-    * Ubuntu: `sudo service nfs-kernel-server start`
+    * Ubuntu: `sudo service nfs-kernel-server start`.  This will likely display a message about "no exports."  This is expected and can be ignored.
 
 * Ensure ports 8000-8003, 4567 are not in use.  If you suspect they may be, use `netstat` to confirm.
 
 *If you are currently using other edX development environments (devstack etc), you will need to "halt" those virtual machines before continuing*
+
+* Ensure the following line appears in your /etc/hosts file (you will need to use sudo to edit this file)
+
+        192.168.33.10  preview.localhost
 
 * Run the installation script to setup the environment
 
@@ -137,6 +138,11 @@ It is recommended you open up a separate terminal for each application and and r
 
 Login to the LMS and CMS with the user "datajam@edx.org" with password "datajam."
 
+## Cleaning Up
+
+Once you are done working in the virtual environment you can shut it down by running `./edx-datajam halt` from the host environment.  If you want to continue working after halting, you can restart it by running `./edx-datajam start`.  If you never want to work with it again, you can destroy the environment using `./edx-datajam destroy`.  Note that destroying the environment will delete any files stored in the virtual environment excluding the repositories that are stored in the host environment and NFS mounted into the virtual environment.
+
 # Issues / Workarounds
 
 See this [wiki page](https://github.com/edx/datajam/wiki/Workarounds-for-Issues)
+There is also an [FAQ](https://github.com/edx/datajam/wiki/Tips-and-FAQ)
