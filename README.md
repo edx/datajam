@@ -21,7 +21,6 @@ The datajam configuration has the following components:
 * Install [Virtualbox 4.2.18](https://www.virtualbox.org/wiki/Download_Old_Builds_4_2)
 * Install [Vagrant 1.3.4](https://github.com/edx/configuration/wiki/Installing-Vagrant)
 * Install [git](http://git-scm.com/downloads)
-* Install [python 2.7](http://www.python.org/download/releases/2.7/)
 * Create a directory to store the image
 
         mkdir ~/edx-datajam-root
