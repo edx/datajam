@@ -17,6 +17,7 @@ The datajam configuration has the following components:
 
 # Installing the edX Datajam Stack
 
+* Install [Python 2.7](http://www.python.org/download/releases/2.7.6/)
 * Install [Virtualbox 4.2.18](https://www.virtualbox.org/wiki/Download_Old_Builds_4_2)
 * Install [Vagrant 1.3.4](https://github.com/edx/configuration/wiki/Installing-Vagrant)
 * Install the `vagrant-hostsupdater` plugin:
