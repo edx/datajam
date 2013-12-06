@@ -21,20 +21,29 @@ The datajam configuration has the following components:
 * Install [Vagrant 1.3.4](https://github.com/edx/configuration/wiki/Installing-Vagrant)
 * Install the `vagrant-hostsupdater` plugin:
 
-    vagrant plugin install vagrant-hostsupdater
+        vagrant plugin install vagrant-hostsupdater
 
 * Install [git](http://git-scm.com/downloads)
 * Create a directory to store the image
 
-    mkdir ~/edx-datajam-root
+        mkdir ~/edx-datajam-root
+        cd ~/edx-datajam-root
 
-    cd ~/edx-datajam-root
+* For an offline install
+    * Copy all of the data off of the USB drive
 
-* Download the installation script
+            tar -xzf /path/to/mounted/drive/edx-datajam-201312061232.tar.gz
 
-    curl -O https://raw.github.com/edx/datajam/master/scripts/edx-datajam
+    * Import the vagrant box
 
-    chmod a+x edx-datajam
+            vagrant box add edx-datajam-201312051108 201312051108-edx-datajam.box
+
+* For an online install
+
+    * Download the installation script
+    
+            curl -O https://raw.github.com/edx/datajam/master/scripts/edx-datajam
+            chmod a+x edx-datajam
 
 * Ensure nfsd is running
     * Mac OS X: `sudo nfsd`
@@ -46,11 +55,11 @@ The datajam configuration has the following components:
 
 * Run the installation script to setup the environment
 
-    ./edx-datajam create
+        ./edx-datajam create
 
 * Once it completes, you should be able to log in to the virtual machine
 
-    ./edx-datajam ssh
+        ./edx-datajam ssh
 
 
 # Using the edX Datajam Stack
@@ -61,13 +70,13 @@ It is recommended you open up a separate terminal for each application and and r
 
 * Within the Vagrant instance, switch to the edxapp account:
 
-    sudo su edxapp
+        sudo su edxapp
 
 *This will source the edxapp environment (`/edx/app/edxapp/edxapp_env`) so that the venv python, rbenv ruby and rake are in your search path.  It will also set the current working directory to the edx-platform repository (`/edx/app/edxapp/edx-platform`).*
 
 * Start the server
 
-    edx-lms-devserver
+        edx-lms-devserver
 
 * Open a browser on your host machine and navigate to ``localhost:8000`` to load the LMS.  (Vagrant will forward port 8000 to the LMS server running in the VM.)
 
@@ -75,13 +84,13 @@ It is recommended you open up a separate terminal for each application and and r
 
 * Within the Vagrant instance, switch to the edxapp account:
 
-    sudo su edxapp
+        sudo su edxapp
 
 *This will source the edxapp environment (`/edx/app/edxapp/edxapp_env`) so that the venv python, rbenv ruby and rake are in your search path.  It will also set the current working directory to the edx-platform repository (`/edx/app/edxapp/edx-platform`).*
 
 * Start the server
 
-    edx-cms-devserver
+        edx-cms-devserver
 
 * Open a browser on your host machine and navigate to ``localhost:8001`` to load Studio.  (Vagrant will forward port 8001 to the Studio server running in the VM.)
 
@@ -90,37 +99,37 @@ It is recommended you open up a separate terminal for each application and and r
 
 * Within the Vagrant instance, switch to the edxapp account:
 
-    sudo su edxapp
+        sudo su edxapp
 
 *This will source the edxapp environment (`/edx/app/edxapp/edxapp_env`) so that the venv python, rbenv ruby and rake are in your search path.  It will also set the current working directory to the edx-platform repository (`/edx/app/edxapp/edx-platform`).*
 
 * Start the server
 
-    edx-insights-devserver
+        edx-insights-devserver
 
 
 ## XBlock Workbench Workflow
 
 * Within the Vagrant instance, switch to the edxapp account:
 
-    sudo su edxapp
+        sudo su edxapp
 
 *This will source the edxapp environment (`/edx/app/edxapp/edxapp_env`) so that the venv python, rbenv ruby and rake are in your search path.  It will also set the current working directory to the edx-platform repository (`/edx/app/edxapp/edx-platform`).*
 
 * Start the server
 
-    edx-workbench-devserver
+        edx-workbench-devserver
 
 
 ## Forum Workflow
 
 * Within the Vagrant instance, switch to the forum account
 
-    sudo su forum
+        sudo su forum
 
 * Start the server
 
-    edx-forum-devserver
+        edx-forum-devserver
 
 * Access the API at ``localhost:4567`` (Vagrant will forward port 4567 to the Forum server running in the VM.)
 
