@@ -56,6 +56,8 @@ class DatajamExecutor(object):
         self.add_action('start', self.start, 'Start up an existing datajam virtual environment')
         self.add_action('destroy', self.destroy, 'Remove a datajam virtual environment.  This will remove everything, use with care!')
         self.add_action('freeze', self.freeze, 'Generate a vagrant box from the current virtual environment state.')
+        self.add_action('suspend', self.suspend, 'Suspend an existing datajam virtual environment, saving its current state.')
+        self.add_action('resume', self.resume, 'Resume a suspended datajam virtual environment')
 
         if len(sys.argv) == 1:
             args = self.parser.parse_args([DEFAULT_ACTION])
@@ -151,6 +153,12 @@ class DatajamExecutor(object):
 
     def halt(self):
         self.execute('vagrant halt')
+
+    def suspend(self):
+        self.execute('vagrant suspend')
+
+    def resume(self):
+        self.execute('vagrant resume')
 
     def start(self):
         self.execute('vagrant up --no-provision')
