@@ -17,26 +17,26 @@ The datajam configuration has the following components:
 
 # Installing the edX Datajam Stack
 
-* Install [Python 2.7](http://www.python.org/download/releases/2.7.6/)
-* Install [Virtualbox 4.2.18](https://www.virtualbox.org/wiki/Download_Old_Builds_4_2)
-* Install [Vagrant 1.3.4](https://github.com/edx/configuration/wiki/Installing-Vagrant)
-* Install [git](http://git-scm.com/downloads)
+
 * Create a directory to store the image
 
         mkdir ~/edx-datajam-root
         cd ~/edx-datajam-root
 
 * For an offline install
+    * Install Python 2.7, Virtualbox 4.2.18, and Vagrant 1.3.4 using the provided packages in the 'dependencies' folder
+        * If you cannot find the packages for your hardware and OS configuration, follow the links in the "online install" instructions to get the correct dependencies for your system.
     * Copy all of the data off of the USB drive
 
-            tar -xzf /path/to/mounted/drive/edx-datajam-201312061232.tar.gz
+            tar -C ~/edx-datajam-root -xzf /path/to/mounted/drive/edx-datajam-201312061232.tar.gz
 
     * Import the vagrant box
 
-            vagrant box add edx-datajam-201312051108 201312051108-edx-datajam.box
+            vagrant box add edx-datajam-201312051108 ~/edx-datajam-root/201312051108-edx-datajam.box
 
 * For an online install
 
+    * Ensure you have [Python 2.7](http://www.python.org/download/releases/2.7.6/), [Virtualbox 4.2.18](https://www.virtualbox.org/wiki/Download_Old_Builds_4_2), [Vagrant 1.3.4](https://github.com/edx/configuration/wiki/Installing-Vagrant), and [git](http://git-scm.com/downloads) installed
     * Download the installation script
     
             curl -O https://raw.github.com/edx/datajam/master/scripts/edx-datajam
