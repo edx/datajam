@@ -26,13 +26,13 @@ The datajam configuration has the following components:
 * For an offline install
     * Install Python 2.7, Virtualbox 4.2.18, and Vagrant 1.3.4 using the provided packages in the 'dependencies' folder
         * If you cannot find the packages for your hardware and OS configuration, follow the links in the "online install" instructions to get the correct dependencies for your system.
-    * Copy all of the data off of the USB drive
+    * Copy all of the data off of the USB drive (you can copy the tar file off of the drive using a GUI file manager if you want, and then extract it using the command below if you are unsure where it is mounted)
 
-            tar -C ~/edx-datajam-root -xzf /path/to/mounted/drive/edx-datajam-201312061232.tar.gz
+            tar -C ~/edx-datajam-root -xzf /path/to/mounted/drive/edx-datajam-201312101139.tar.gz
 
     * Import the vagrant box
 
-            vagrant box add edx-datajam-201312051108 ~/edx-datajam-root/201312051108-edx-datajam.box
+            vagrant box add edx-datajam-201312101139 ~/edx-datajam-root/201312101139-edx-datajam.box
 
 * For an online install
 
