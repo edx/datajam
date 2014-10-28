@@ -1,3 +1,5 @@
+# THIS REPO IS DEPRECATED
+
 The edX *datajam stack* is a [Vagrant](http://www.vagrantup.com/about.html) instance designed for local development for datajam participants.  The instance:
 
 * Uses the same system dependencies as edX production.
@@ -38,7 +40,7 @@ The datajam configuration has the following components:
 
     * Ensure you have [Python 2.7](http://www.python.org/download/releases/2.7.6/), [Virtualbox 4.2.18](https://www.virtualbox.org/wiki/Download_Old_Builds_4_2), [Vagrant 1.3.4](https://github.com/edx/configuration/wiki/Installing-Vagrant), and [git](http://git-scm.com/downloads) installed
     * Download the installation script
-    
+
             curl -O https://raw.github.com/edx/datajam/master/scripts/edx-datajam
             chmod a+x edx-datajam
 
